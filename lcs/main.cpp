@@ -2,18 +2,18 @@
 
 int main()
 {
-    int* seq1, *seq2;
+    int* sequence[2];
     int length1, length2;
 
     scanf("%i", &length1);
-    seq1 = new int[length1];
+    sequence[0] = new int[length1];
     for (int i=0; i<length1; i++)
-        scanf("%i", &seq1[i]);
+        scanf("%i", &(sequence[0][i]) );
     
     scanf("%i", &length2);
-    seq2 = new int[length2];
+    sequence[1] = new int[length2];
     for (int i=0; i<length2; i++)
-        scanf("%i", &seq2[i]);
+        scanf("%i", &(sequence[1][i]));
 
     //length of Longest Common Sequence for seq1{1,...,i} and seq2{1,...j}
     //general array
@@ -27,7 +27,7 @@ int main()
     
     for (int seq1_it = 0; seq1_it < length1; seq1_it++)
     {
-        if (seq1[seq1_it] == seq2[0])
+        if (sequence[0][seq1_it] == sequence[1][0])
              to_do = 1;
         lcs[0][seq1_it] = to_do;
     }
@@ -35,7 +35,7 @@ int main()
     to_do = 0;
     for (int seq2_it = 0; seq2_it < length2; seq2_it++)
     {
-        if (seq2[seq2_it] == seq1[0])
+        if (sequence[1][seq2_it] == sequence[0][0])
             to_do = 1;
         lcs[seq2_it][0] = to_do;
     }
@@ -45,7 +45,7 @@ int main()
     {
         for (int seq1_it = 1; seq1_it < length1; seq1_it++)
         {
-            if (seq1[seq1_it] == seq2[seq2_it])
+            if (sequence[0][seq1_it] == sequence[1][seq2_it])
             {
                 lcs[seq2_it][seq1_it] = lcs[seq2_it - 1][seq1_it - 1] + 1;
             }
