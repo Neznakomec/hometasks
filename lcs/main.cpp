@@ -31,7 +31,7 @@ int main()
 
     int to_do = 0;
     
-    for (int seq1_it = 0; seq1_it < length[0]; seq1_it++)
+    for (int seq1_it = 0; seq1_it < length[0]; ++seq1_it)
     {
         if (sequence[0][seq1_it] == sequence[1][0])
              to_do = 1;
@@ -46,7 +46,7 @@ int main()
         lcs[seq2_it][0] = to_do;
     }
 
-    //common dynamic programming cycle
+    // common dynamic programming cycle
     for (int seq2_it = 1; seq2_it < length[1]; ++seq2_it)
     {
         for (int seq1_it = 1; seq1_it < length[0]; ++seq1_it)
@@ -67,7 +67,6 @@ int main()
                 }
             }
         }
-
     }
 
     printf("%i", lcs[length[1]-1][length[0]-1]);
